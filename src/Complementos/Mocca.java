@@ -1,20 +1,37 @@
 package Complementos;
-
-import Bebidas.Cafe;
+import Bebidas.*;
 
 public class Mocca extends Complemento {
 
-    public Mocca(Cafe cafe) {
+    private String tamano;
+
+    public Mocca(Cafe cafe, String tamano) {
         super(cafe);
+        this.tamano = tamano;
     }
 
     @Override
     public String getDescripcion() {
-        return cafe.getDescripcion() + " + mocca ";
+        return cafe.getDescripcion() + ", Mocca " + tamano;
     }
 
     @Override
     public double getCosto() {
-        return cafe.getCosto() + 1.53;
+
+        double precio = 0;
+
+        switch (tamano) {
+            case "N":
+                precio = 0.20;
+                break;
+            case "M":
+                precio = 0.25;
+                break;
+            case "G":
+                precio = 0.30;
+                break;
+        }
+
+        return cafe.getCosto() + precio;
     }
 }

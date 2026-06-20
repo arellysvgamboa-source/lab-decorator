@@ -1,20 +1,38 @@
 package Complementos;
 
-import Bebidas.Cafe;
+import Bebidas.*;
 
 public class Crema extends Complemento {
 
-    public Crema(Cafe cafe) {
+    private String tamano;
+
+    public Crema(Cafe cafe, String tamano) {
         super(cafe);
+        this.tamano = tamano;
     }
 
     @Override
     public String getDescripcion() {
-        return cafe.getDescripcion() + " + crema ";
+        return cafe.getDescripcion() + ", Crema " + tamano;
     }
 
     @Override
     public double getCosto() {
-        return cafe.getCosto() + 0.25;
+
+        double precio = 0;
+
+        switch (tamano) {
+            case "N":
+                precio = 0.10;
+                break;
+            case "M":
+                precio = 0.15;
+                break;
+            case "G":
+                precio = 0.20;
+                break;
+        }
+
+        return cafe.getCosto() + precio;
     }
 }
