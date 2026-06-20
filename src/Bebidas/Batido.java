@@ -2,13 +2,27 @@ package Bebidas;
 
 public class Batido extends Cafe {
 
+    public Batido(String tamano) {
+        super(tamano);
+    }
+
     @Override
     public String getDescripcion() {
-        return "Café Batido";
+        return "Cafe Batido " + tamano;
     }
 
     @Override
     public double getCosto() {
-        return 0.95;
+
+        switch (tamano) {
+            case "N":
+                return 0.89;
+            case "M":
+                return 0.99;
+            case "G":
+                return 1.09;
+            default:
+                return 0.89;
+        }
     }
 }
